@@ -6,7 +6,7 @@
 //  Copyright 2014 __MyCompanyName__. All rights reserved.
 //
 
-static const float PLAYER_SPEED = 10.0;
+static const float PLAYER_SPEED = 50.0; // extern or put constants in header... lol god c is weird
 
 
 @interface Player : CCNode {

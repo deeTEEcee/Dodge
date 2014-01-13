@@ -18,11 +18,24 @@
     } touchData; // why? actually, it's probably better to use this as a static varaible but i just wanted to use this outside the touch functions
 }
 
-@property Ball* ball;
+@property NSMutableArray* balls;
 @property Player* player;
+-(Ball*) spawnBall;
+
+
+-(void) restart; // restart the game
+-(void) clear:(NSMutableArray*)balls;
 -(void) updateObjects:(ccTime)deltaTime;
 -(void) updatePlayer:(ccTime)deltaTime;
+-(void) setPlayerPosition:(CGPoint) position;
 
+// game over related
+-(BOOL) collisionExists;
+-(void) setupGameOverMenu;
+-(void) switchToMenuLayer;
+-(void) gameOver;
+
+// overridden methods
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event;

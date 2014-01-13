@@ -20,6 +20,7 @@ extern const float BALL_SPEED;
     
 }
 
+-(BOOL) outOfBoundary;
 -(CGPoint) getRandomSpawnPoint;
 
 @end

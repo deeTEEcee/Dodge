@@ -8,6 +8,9 @@
 #import "GameLayer.h"
 #import "Ball.h"
 #import "Player.h"
+#import "GameManager.h"
+
+static CGSize WIN_SIZE;
 
 @implementation GameLayer
 
@@ -16,40 +19,64 @@
 	if (self = [super init])
 	{
         [self setTouchEnabled: YES];
-        _ball = [Ball node];
+        WIN_SIZE = [[CCDirector sharedDirector] winSize];
+        
+        _balls = [NSMutableArray array];
         _player = [Player node];
         
-        [self addChild:_ball];
+        
+        
+        
         [self addChild:_player];
         
-        double slope = (_player.position.y-_ball.position.y)/(_player.position.x-_ball.position.x);
-        CGFloat x2;
-        CGFloat y2;
-        CGSize winSize = [[CCDirector sharedDirector] winSize];
-        if ([_player position].x>[_ball position].x){
-            x2 = winSize.width+[_ball boundingBox].size.width/2;
-        }
-        else if([_player position].x<[_ball position].x){
-            x2 = 0-[_ball boundingBox].size.width/2;
-        }
-        y2 = _ball.position.y+slope*(x2-_ball.position.x); // y2 = y1+m(x2-x1)
-        
-        CGPoint dest = ccp(x2,y2);
-        [_ball runAction:[CCMoveTo actionWithDuration:ccpDistance(_ball.position,dest)/BALL_SPEED position:dest]];
-        
-        [self schedule:@selector(updateObjects:)];
-        [self schedule:@selector(updatePlayer:)];
+        [self scheduleUpdate];
+        [self schedule:@selector(updateObjects:) interval:1];
+//        [self schedule:@selector(updatePlayer:)];
         CCLOG(@"initialized");
 	}
     
 	return self;
 }
 
--(void) updateObjects:(ccTime)deltaTime{
+-(Ball*) spawnBall{
+    Ball* ball = [Ball node];
+    [self addChild:ball];
     
+    double slope = (_player.position.y-ball.position.y)/(_player.position.x-ball.position.x);
+    CGFloat x2;
+    CGFloat y2;
+    if ([_player position].x>[ball position].x){
+        x2 = WIN_SIZE.width+[ball boundingBox].size.width/2;
+    }
+    else if([_player position].x<[ball position].x){
+        x2 = 0-[ball boundingBox].size.width/2;
+    }
+    y2 = ball.position.y+slope*(x2-ball.position.x); // y2 = y1+m(x2-x1)
+    
+    CGPoint dest = ccp(x2,y2);
+    [ball runAction:[CCMoveTo actionWithDuration:ccpDistance(ball.position,dest)/BALL_SPEED position:dest]];
+    return ball;
+}
+
+-(void) updateObjects:(ccTime)deltaTime{
+    Ball* newBall = [self spawnBall];
+    NSMutableArray* ballsToCleanUp = [NSMutableArray array];
+    for(Ball* ball in _balls){
+        if([ball outOfBoundary]){
+            [ballsToCleanUp addObject:ball];
+        }
+    }
+    [_balls addObject:newBall];
+    [self clear:ballsToCleanUp];
     
 }
 
+-(void) clear:(NSMutableArray*) balls{
+    for(Ball* ball in balls){
+        [self removeChild:ball];
+        [_balls removeObject:ball];
+    }
+}
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
     touchData.inUse = YES;
@@ -82,16 +109,23 @@
 -(void) setPlayerPosition:(CGPoint) position{
     //    CGPoint currentPosition = _player.position;
     _player.position = position;
-//    if (CGRectIntersectsRect([_snake boundingBox],[_player boundingBox])){
-//        // game over
-//    }
+    //    if (CGRectIntersectsRect([_snake boundingBox],[_player boundingBox])){
+    // game over
+    //    }
+}
+
+-(void) update:(ccTime)delta{
+    [self updatePlayer:delta];
+    // check collisions
+    if ([self collisionExists]){
+        [self gameOver];
+    }
+    
 }
 
 -(void) updatePlayer:(ccTime)deltaTime {
     // touch + movement
     if(touchData.inUse){
-        //        CCLOG(@"Bear is at: %@", CGPointCreateDictionaryRepresentation(self.bear.position));
-//        CCLOG(@"Touch position is at: %@", CGPointCreateDictionaryRepresentation(touchData.position));
         CGPoint playerPos = [_player position];
         CGSize playerSize = [_player boundingBox].size;
         CGPoint playerWorldPos = [self convertToWorldSpace:playerPos];
@@ -125,6 +159,52 @@
         [self setPlayerPosition:playerPos];
     }
     
+}
+
+-(BOOL) collisionExists{
+    for(Ball* ball in _balls){
+        if (CGRectIntersectsRect([ball boundingBox],[_player boundingBox])){
+            return true;
+        }
+    }
+    return false;
+}
+
+-(void) setupGameOverMenu{
+    // TODO: technically, this should be its own object (by default, cocos2d doesn't look like it has any way of implementing a menu with a title... which is stupid
+    CCLabelTTF* label = [CCLabelTTF labelWithString:@"Game Over" fontName:@"Arial" fontSize:12];
+    label.position = ccp(WIN_SIZE.width/2, WIN_SIZE.height/2);
+    [self addChild:label];
+    
+    CCLabelTTF* restartLabel = [CCLabelTTF labelWithString:@"Restart" fontName: @"Arial" fontSize:12];
+    CCMenuItemLabel* restartItem = [CCMenuItemLabel itemWithLabel:restartLabel target:self selector:@selector(restart)];
+    
+    CCLabelTTF* menuLabel = [CCLabelTTF labelWithString:@"Main Menu" fontName: @"Arial" fontSize:12];
+    CCMenuItemLabel* menuItem = [CCMenuItemLabel itemWithLabel:menuLabel target:self selector:@selector(switchToMenuLayer)];
+    
+    CCMenu * menu = [CCMenu menuWithItems:restartItem, menuItem, nil];
+    [menu alignItemsVertically];
+    CCLOG(@"Menu position %@", NSStringFromCGPoint(menu.position));
+    menu.position = ccpSub(label.position, ccp(0,[label boundingBox].size.height*2));
+    CCLOG(@"Menu position %@", NSStringFromCGPoint(menu.position));
+    
+    [self addChild:menu];
+}
+
+-(void) restart{
+    [[CCDirector sharedDirector] replaceScene:[GameManager newGameScene]];
+}
+
+-(void) switchToMenuLayer{
+    [[CCDirector sharedDirector] replaceScene:[GameManager sharedIntroScene]];
+}
+
+-(void) gameOver {
+    // display (todo: move over to hud display)
+    [self setupGameOverMenu];
+    
+    // when the game is over, all updates cease (note: a few balls are not removed, im assuming they get removed when we reinitialize this layer)
+    [self unscheduleAllSelectors];
 }
 
 

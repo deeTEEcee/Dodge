@@ -40,4 +40,14 @@ const float BALL_SPEED = 100.0;
     [NSException raise:@"Invalid Position" format:@"Position: %d", pos];
 }
 
+-(BOOL) outOfBoundary{
+    if(self.position.x <= -[self boundingBox].size.width/2 || self.position.x >= WIN_SIZE.width+[self boundingBox].size.width/2){
+        return true;
+    }
+    if(self.position.y <= -[self boundingBox].size.height/2 || self.position.y>= WIN_SIZE.height+[self boundingBox].size.height/2){
+        return true;
+    }
+    return false;
+}
+
 @end

@@ -6,6 +6,7 @@
  */
 
 #import "AppDelegate.h"
+#import "GameManager.h"
 
 @implementation AppDelegate
 
@@ -16,6 +17,9 @@
 #else
 	CCLOG(@"ARC is either not available or not enabled");
 #endif
+    GameManager* gm = [[GameManager alloc] init];
+    [[CCDirector sharedDirector] runWithScene:[GameManager sharedIntroScene]];
+    
 }
 
 -(id) alternateView
