@@ -7,9 +7,9 @@
 //
 
 #import "Ball.h"
+#import "Constants.h"
 
 static CGSize WIN_SIZE;
-const float BALL_SPEED = 100.0;
 
 @implementation Ball
 

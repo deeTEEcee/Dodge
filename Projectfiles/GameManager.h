@@ -15,5 +15,6 @@
 +(CCScene*) sharedIntroScene;
 +(CCScene*) sharedGameScene;
 +(CCScene*) newGameScene;
++(CCScene*) newIntroScene;
 
 @end

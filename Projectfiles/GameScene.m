@@ -13,6 +13,7 @@
 @implementation GameScene
 
 -(id) init{
+    CCLOG(@"Game Scene Initialized");
     if(self=[super init]){
         GameLayer* gameLayer = [GameLayer node];
         [self addChild:gameLayer];

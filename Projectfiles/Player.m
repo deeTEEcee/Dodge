@@ -7,6 +7,7 @@
 //
 
 #import "Player.h"
+#import "Constants.h"
 
 
 @implementation Player
@@ -16,6 +17,7 @@
         CCSprite* player = [CCSprite spriteWithFile:@"test.png"];
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         self.position = ccp(winSize.width/2, winSize.height/2);
+        self.contentSize = [player contentSize];
         [self addChild:player];
     }
     return self;

@@ -26,8 +26,15 @@ static GameScene* game = nil;
 }
 
 +(CCScene*) newGameScene{
+    CCLOG(@"New Game Scene");
     game = [GameScene node];
     return game;
+}
+
++(CCScene*) newIntroScene{
+    CCLOG(@"New Intro Scene");
+    intro = [IntroScene node];
+    return intro;
 }
 
 -(id) init{
@@ -35,7 +42,7 @@ static GameScene* game = nil;
     
     // only need an intro layer but we need a game scene
     intro = [IntroScene node];
-    game = [GameScene node];
+//    game = [GameScene node];
     return self;
 }
 

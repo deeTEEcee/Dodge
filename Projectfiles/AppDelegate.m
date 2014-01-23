@@ -17,7 +17,8 @@
 #else
 	CCLOG(@"ARC is either not available or not enabled");
 #endif
-    GameManager* gm = [[GameManager alloc] init];
+    GameManager* gm = [[GameManager alloc] init]; // code-wise, you should put this in some [GameManager getSingleton]
+//    [[[CCDirector sharedDirector ] scheduler] setTimeScale:0.5];
     [[CCDirector sharedDirector] runWithScene:[GameManager sharedIntroScene]];
     
 }

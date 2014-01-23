@@ -35,6 +35,8 @@
 		6943E80F1884A487008B9060 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6943E80D1884A487008B9060 /* IntroScene.m */; };
 		696C9C95188088FC0042A0BE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C9C94188088FC0042A0BE /* Player.m */; };
 		696C9C96188088FC0042A0BE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C9C94188088FC0042A0BE /* Player.m */; };
+		69F7D47218909DEC00A03C6A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F7D47118909DEC00A03C6A /* Constants.m */; };
+		69F7D47318909DEC00A03C6A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F7D47118909DEC00A03C6A /* Constants.m */; };
 		DC21B88B1511078F00FD4891 /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B8881511078F00FD4891 /* fps_images-hd.png */; };
 		DC21B88C1511078F00FD4891 /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B8891511078F00FD4891 /* fps_images-ipadhd.png */; };
 		DC21B88D1511078F00FD4891 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B88A1511078F00FD4891 /* fps_images.png */; };
@@ -99,6 +101,8 @@
 		6943E80D1884A487008B9060 /* IntroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroScene.m; sourceTree = "<group>"; };
 		696C9C93188088FC0042A0BE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		696C9C94188088FC0042A0BE /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		69F7D47018909DEC00A03C6A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		69F7D47118909DEC00A03C6A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DC21B8881511078F00FD4891 /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-hd.png"; sourceTree = "<group>"; };
 		DC21B8891511078F00FD4891 /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-ipadhd.png"; sourceTree = "<group>"; };
 		DC21B88A1511078F00FD4891 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
@@ -311,6 +315,8 @@
 				6943E80B18849D88008B9060 /* Layers */,
 				6943E80A18849D82008B9060 /* Scenes */,
 				6943E80918849D7D008B9060 /* Objects */,
+				69F7D47018909DEC00A03C6A /* Constants.h */,
+				69F7D47118909DEC00A03C6A /* Constants.m */,
 				6943E80518849D1C008B9060 /* GameManager.h */,
 				6943E80618849D1C008B9060 /* GameManager.m */,
 				DCC1A38D13A94F1A005BD75D /* AppDelegate.h */,
@@ -402,7 +408,7 @@
 		DCC1A0D813A94EC0005BD75D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = DCC1A0DB13A94EC0005BD75D /* Build configuration list for PBXProject "Dodge" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -484,6 +490,7 @@
 				696C9C95188088FC0042A0BE /* Player.m in Sources */,
 				6943E80718849D1C008B9060 /* GameManager.m in Sources */,
 				6943E7FF18849CF2008B9060 /* GameScene.m in Sources */,
+				69F7D47218909DEC00A03C6A /* Constants.m in Sources */,
 				DCC1A3A913A94F1A005BD75D /* AppDelegate.m in Sources */,
 				DCC1A3AB13A94F1A005BD75D /* GameLayer.m in Sources */,
 				6943E80E1884A487008B9060 /* IntroScene.m in Sources */,
@@ -500,6 +507,7 @@
 				696C9C96188088FC0042A0BE /* Player.m in Sources */,
 				6943E80818849D1C008B9060 /* GameManager.m in Sources */,
 				6943E80018849CF2008B9060 /* GameScene.m in Sources */,
+				69F7D47318909DEC00A03C6A /* Constants.m in Sources */,
 				DCC1A3AA13A94F1A005BD75D /* AppDelegate.m in Sources */,
 				DCC1A3AC13A94F1A005BD75D /* GameLayer.m in Sources */,
 				6943E80F1884A487008B9060 /* IntroScene.m in Sources */,
@@ -532,6 +540,7 @@
 		DCC1A0DD13A94EC0005BD75D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -559,6 +568,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC9C33E713B5024400931BF2 /* BuildSettings-Debug-Mac.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 			};
 			name = Debug;
 		};
@@ -566,6 +576,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC9C33E913B5024400931BF2 /* BuildSettings-Release-Mac.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 			};
 			name = Release;
 		};

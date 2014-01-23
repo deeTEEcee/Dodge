@@ -9,6 +9,7 @@
 #import "Ball.h"
 #import "Player.h"
 #import "GameManager.h"
+#import "Constants.h"
 
 static CGSize WIN_SIZE;
 
@@ -30,7 +31,7 @@ static CGSize WIN_SIZE;
         [self addChild:_player];
         
         [self scheduleUpdate];
-        [self schedule:@selector(updateObjects:) interval:1];
+        [self schedule:@selector(updateObjects:) interval:0.8];
 //        [self schedule:@selector(updatePlayer:)];
         CCLOG(@"initialized");
 	}
@@ -116,10 +117,13 @@ static CGSize WIN_SIZE;
 
 -(void) update:(ccTime)delta{
     [self updatePlayer:delta];
+    CCLOG(@"Player position: %@", NSStringFromCGPoint(self.player.position));
     // check collisions
     if ([self collisionExists]){
+        CCLOG(@"Collided");
         [self gameOver];
     }
+    
     
 }
 
@@ -163,6 +167,7 @@ static CGSize WIN_SIZE;
 
 -(BOOL) collisionExists{
     for(Ball* ball in _balls){
+        CCLOG(@"Ball position: %@", NSStringFromCGPoint(ball.position));
         if (CGRectIntersectsRect([ball boundingBox],[_player boundingBox])){
             return true;
         }
@@ -196,7 +201,7 @@ static CGSize WIN_SIZE;
 }
 
 -(void) switchToMenuLayer{
-    [[CCDirector sharedDirector] replaceScene:[GameManager sharedIntroScene]];
+    [[CCDirector sharedDirector] replaceScene:[GameManager newIntroScene]];
 }
 
 -(void) gameOver {
