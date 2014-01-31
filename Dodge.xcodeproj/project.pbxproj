@@ -35,6 +35,8 @@
 		6943E80F1884A487008B9060 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6943E80D1884A487008B9060 /* IntroScene.m */; };
 		696C9C95188088FC0042A0BE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C9C94188088FC0042A0BE /* Player.m */; };
 		696C9C96188088FC0042A0BE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C9C94188088FC0042A0BE /* Player.m */; };
+		6983B2F11899C5ED00E35D8C /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6983B2F01899C5ED00E35D8C /* HUDLayer.m */; };
+		6983B2F21899C5ED00E35D8C /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6983B2F01899C5ED00E35D8C /* HUDLayer.m */; };
 		69F7D47218909DEC00A03C6A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F7D47118909DEC00A03C6A /* Constants.m */; };
 		69F7D47318909DEC00A03C6A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F7D47118909DEC00A03C6A /* Constants.m */; };
 		DC21B88B1511078F00FD4891 /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B8881511078F00FD4891 /* fps_images-hd.png */; };
@@ -101,6 +103,8 @@
 		6943E80D1884A487008B9060 /* IntroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroScene.m; sourceTree = "<group>"; };
 		696C9C93188088FC0042A0BE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		696C9C94188088FC0042A0BE /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		6983B2EF1899C5ED00E35D8C /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
+		6983B2F01899C5ED00E35D8C /* HUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDLayer.m; sourceTree = "<group>"; };
 		69F7D47018909DEC00A03C6A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		69F7D47118909DEC00A03C6A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DC21B8881511078F00FD4891 /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-hd.png"; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				6943E7F618848ACC008B9060 /* IntroLayer.m */,
 				DCC1A38F13A94F1A005BD75D /* GameLayer.h */,
 				DCC1A39013A94F1A005BD75D /* GameLayer.m */,
+				6983B2EF1899C5ED00E35D8C /* HUDLayer.h */,
+				6983B2F01899C5ED00E35D8C /* HUDLayer.m */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6943E7F718848ACC008B9060 /* IntroLayer.m in Sources */,
+				6983B2F11899C5ED00E35D8C /* HUDLayer.m in Sources */,
 				6943E7DE18808B66008B9060 /* Ball.m in Sources */,
 				696C9C95188088FC0042A0BE /* Player.m in Sources */,
 				6943E80718849D1C008B9060 /* GameManager.m in Sources */,
@@ -503,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6943E7F818848ACC008B9060 /* IntroLayer.m in Sources */,
+				6983B2F21899C5ED00E35D8C /* HUDLayer.m in Sources */,
 				6943E7DF18808B66008B9060 /* Ball.m in Sources */,
 				696C9C96188088FC0042A0BE /* Player.m in Sources */,
 				6943E80818849D1C008B9060 /* GameManager.m in Sources */,

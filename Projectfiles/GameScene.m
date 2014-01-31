@@ -8,17 +8,26 @@
 
 #import "GameScene.h"
 #import "GameLayer.h"
+#import "HUDLayer.h"
 
+static GameLayer* gameLayer = nil;
+static HUDLayer* hudLayer = nil;
 
 @implementation GameScene
 
 -(id) init{
     CCLOG(@"Game Scene Initialized");
     if(self=[super init]){
-        GameLayer* gameLayer = [GameLayer node];
+        gameLayer = [GameLayer node];
+        hudLayer = [HUDLayer node];
         [self addChild:gameLayer];
+        [self addChild:hudLayer];
     }
     return self;
+}
+
++(GameLayer*) sharedGameLayer{
+    return gameLayer;
 }
 
 @end

@@ -20,11 +20,15 @@
 
 @property NSMutableArray* balls;
 @property Player* player;
+@property NSInteger score;
 -(Ball*) spawnBall;
 
 
 -(void) restart; // restart the game
 -(void) clear:(NSMutableArray*)balls;
+
+-(void) update:(ccTime)delta;
+-(void) updateScore:(ccTime)deltaTime;
 -(void) updateObjects:(ccTime)deltaTime;
 -(void) updatePlayer:(ccTime)deltaTime;
 -(void) setPlayerPosition:(CGPoint) position;

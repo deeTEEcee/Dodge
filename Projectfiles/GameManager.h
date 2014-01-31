@@ -12,6 +12,8 @@
 @interface GameManager : NSObject {
 }
 
+@property (getter=highScore, setter=setHighScore:) NSInteger highScore;
+
 +(CCScene*) sharedIntroScene;
 +(CCScene*) sharedGameScene;
 +(CCScene*) newGameScene;

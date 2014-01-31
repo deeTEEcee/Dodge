@@ -19,21 +19,19 @@ static CGSize WIN_SIZE;
 {
 	if (self = [super init])
 	{
+        self.score = 0;
         [self setTouchEnabled: YES];
         WIN_SIZE = [[CCDirector sharedDirector] winSize];
         
         _balls = [NSMutableArray array];
         _player = [Player node];
         
-        
-        
-        
-        [self addChild:_player];
-        
         [self scheduleUpdate];
         [self schedule:@selector(updateObjects:) interval:0.8];
-//        [self schedule:@selector(updatePlayer:)];
-        CCLOG(@"initialized");
+        [self schedule:@selector(updateScore:) interval:1.0];
+        
+        [self addChild:_player];
+        CCLOG(@"gamelayer initialized");
 	}
     
 	return self;
@@ -57,6 +55,10 @@ static CGSize WIN_SIZE;
     CGPoint dest = ccp(x2,y2);
     [ball runAction:[CCMoveTo actionWithDuration:ccpDistance(ball.position,dest)/BALL_SPEED position:dest]];
     return ball;
+}
+
+-(void) updateScore:(ccTime)deltaTime{
+    self.score += deltaTime;
 }
 
 -(void) updateObjects:(ccTime)deltaTime{
@@ -123,8 +125,7 @@ static CGSize WIN_SIZE;
         CCLOG(@"Collided");
         [self gameOver];
     }
-    
-    
+    CCLOG(@"new score: %d", self.score);
 }
 
 -(void) updatePlayer:(ccTime)deltaTime {
