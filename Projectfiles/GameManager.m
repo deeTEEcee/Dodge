@@ -10,49 +10,40 @@
 #import "IntroScene.h"
 #import "GameScene.h"
 
-static IntroScene* intro = nil;
-static GameScene* game = nil;
-static NSUserDefaults* def = nil;
-
 @implementation GameManager
 
 @synthesize highScore=_highScore; // if getter, setter is self-defined, synthesize is not auto-synthesized by compiler
 
-+(CCScene*) sharedIntroScene{
-    NSAssert(intro!=nil, @"Intro is nil. Why?!!");
-    return intro;
++(GameManager*) sharedManager {
+    static GameManager* instance = nil;
+    CCLOG(@"NEW INSTANCE");
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[GameManager alloc] init];
+    });
+    CCLOG(@"INSTANCE INITED");
+    return instance;
 }
 
-+(CCScene*) sharedGameScene{
-     NSAssert(game!=nil, @"Game is nil. Why?!!");
-    return game;
-}
-
-+(CCScene*) newGameScene{
+-(CCScene*) newGameScene{
     CCLOG(@"New Game Scene");
-    game = [GameScene node];
-    return game;
+    _gameScene = [GameScene node];
+    return _gameScene;
 }
 
-+(CCScene*) newIntroScene{
+-(CCScene*) newIntroScene{
     CCLOG(@"New Intro Scene");
-    intro = [IntroScene node];
-    return intro;
+    _introScene = [IntroScene node];
+    return _introScene;
 }
 
 -(id) init{
-    // TODO: not a true singleton object yet
     if( self = [super init]){
         def = [NSUserDefaults standardUserDefaults];
         self.highScore = [def integerForKey:@"highScore"];
-        CCLOG(@"Saved Score: %ld", self.highScore);
+        CCLOG(@"Saved Score: %d", self.highScore);
         self.highScore += 5;
-        CCLOG(@"New Score: %ld", self.highScore);
-//        [def setInteger:self.score forKey:@"score"];
-//        [def synchronize];
-        // only need an intro layer but we need a game scene
-        intro = [IntroScene node];
-        //    game = [GameScene node];
+        CCLOG(@"New Score: %d", self.highScore);
     }
     return self;
 }

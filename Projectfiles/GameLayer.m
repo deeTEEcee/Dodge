@@ -177,7 +177,7 @@ static CGSize WIN_SIZE;
 }
 
 -(void) setupGameOverMenu{
-    // TODO: technically, this should be its own object (by default, cocos2d doesn't look like it has any way of implementing a menu with a title... which is stupid
+    // TODO: technicalÏly, this should be its own object (by default, cocos2d doesn't look like it has any way of implementing a menu with a title... which is stupid
     CCLabelTTF* label = [CCLabelTTF labelWithString:@"Game Over" fontName:@"Arial" fontSize:12];
     label.position = ccp(WIN_SIZE.width/2, WIN_SIZE.height/2);
     [self addChild:label];
@@ -198,11 +198,11 @@ static CGSize WIN_SIZE;
 }
 
 -(void) restart{
-    [[CCDirector sharedDirector] replaceScene:[GameManager newGameScene]];
+    [[CCDirector sharedDirector] replaceScene:[[GameManager sharedManager] newGameScene]];
 }
 
 -(void) switchToMenuLayer{
-    [[CCDirector sharedDirector] replaceScene:[GameManager newIntroScene]];
+    [[CCDirector sharedDirector] replaceScene:[[GameManager sharedManager] newIntroScene]];
 }
 
 -(void) gameOver {

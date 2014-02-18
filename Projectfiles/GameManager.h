@@ -10,13 +10,26 @@
 @class GameScene;
 
 @interface GameManager : NSObject {
+    NSUserDefaults* def;
 }
 
-@property (getter=highScore, setter=setHighScore:) NSInteger highScore;
+// readonly but we can use _varname to privately access it
+@property IntroScene* introScene;
+@property GameScene* gameScene;
 
-+(CCScene*) sharedIntroScene;
-+(CCScene*) sharedGameScene;
-+(CCScene*) newGameScene;
-+(CCScene*) newIntroScene;
+// needed custom setter for synchronizing with the device itself
+@property (getter=highScore,setter=setHighScore:) NSInteger highScore;
+
+
++(GameManager*) sharedManager;
+
+-(NSInteger) highScore;
+-(void) setHighScore:(NSInteger)highScore;
+-(CCScene*) newGameScene;
+-(CCScene*) newIntroScene;
+-(IntroScene*) introScene;
+-(GameScene*) gameScene;
+-(void) setIntroScene:(IntroScene *)introScene;
+-(void) setGameScene:(GameScene *)gameScene;
 
 @end

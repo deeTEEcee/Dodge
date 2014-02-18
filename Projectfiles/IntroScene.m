@@ -14,6 +14,7 @@
 
 -(id) init{
     if(self=[super init]){
+        CCLOG(@"Intro scene initialized");
         IntroLayer* introLayer = [IntroLayer node];
         [self addChild:introLayer];
     }
