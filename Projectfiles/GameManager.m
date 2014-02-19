@@ -42,8 +42,6 @@
         def = [NSUserDefaults standardUserDefaults];
         self.highScore = [def integerForKey:@"highScore"];
         CCLOG(@"Saved Score: %d", self.highScore);
-        self.highScore += 5;
-        CCLOG(@"New Score: %d", self.highScore);
     }
     return self;
 }

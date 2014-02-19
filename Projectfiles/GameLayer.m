@@ -209,6 +209,12 @@ static CGSize WIN_SIZE;
     // display (todo: move over to hud display)
     [self setupGameOverMenu];
     
+    // update the highest score
+    GameManager* manager = [GameManager sharedManager];
+    if(self.score>[manager highScore]){
+        [manager setHighScore:self.score];
+    }
+    
     // when the game is over, all updates cease (note: a few balls are not removed, im assuming they get removed when we reinitialize this layer)
     [self unscheduleAllSelectors];
 }
