@@ -1,0 +1,1 @@
+extern CGSize WIN_SIZE;

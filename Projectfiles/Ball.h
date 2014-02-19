@@ -6,6 +6,9 @@
 //  Copyright 2014 __MyCompanyName__. All rights reserved.
 //
 
+@class Player;
+
+
 typedef enum {
     TOP,
     BOTTOM,
@@ -13,13 +16,18 @@ typedef enum {
     RIGHT,
 } Position;
 
-extern const float BALL_SPEED;
-
-
 @interface Ball : CCNode {
-    
+    CGPoint target;
 }
 
+
+
+// main function for action
+-(void) initBall;
+-(void) target:(CGPoint) position;
+-(void) lineAttack:(CGPoint) position;
+
+// private functions
 -(BOOL) outOfBoundary;
 -(CGPoint) getRandomSpawnPoint;
 

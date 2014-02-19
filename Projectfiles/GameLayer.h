@@ -21,17 +21,21 @@
 @property NSMutableArray* balls;
 @property Player* player;
 @property NSInteger score;
--(Ball*) spawnBall;
-
+@property NSInteger difficulty;
 
 -(void) restart; // restart the game
 -(void) clear:(NSMutableArray*)balls;
 
 -(void) update:(ccTime)delta;
--(void) updateScore:(ccTime)deltaTime;
--(void) updateObjects:(ccTime)deltaTime;
 -(void) updatePlayer:(ccTime)deltaTime;
 -(void) setPlayerPosition:(CGPoint) position;
+
+-(void) spawnRegularBalls:(ccTime)deltaTime;
+-(void) spawnCircleBalls:(ccTime)deltaTime;
+-(void) cleanupBalls:(ccTime)deltaTime;
+
+-(void) updateDifficulty:(ccTime)deltaTime;
+-(void) updateScore:(ccTime)deltaTime;
 
 // game over related
 -(BOOL) collisionExists;

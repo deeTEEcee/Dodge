@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69297EE518B43DDC0024C8EC /* CircleBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 69297EE418B43DDC0024C8EC /* CircleBall.m */; };
+		69297EE618B43DDC0024C8EC /* CircleBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 69297EE418B43DDC0024C8EC /* CircleBall.m */; };
+		69297EE918B444A30024C8EC /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 69297EE818B444A30024C8EC /* Constants.m */; };
+		69297EEA18B444A30024C8EC /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 69297EE818B444A30024C8EC /* Constants.m */; };
+		69297EF618B44FD40024C8EC /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 69297EF518B44FD40024C8EC /* Global.m */; };
+		69297EF718B44FD40024C8EC /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 69297EF518B44FD40024C8EC /* Global.m */; };
+		69297EF918B44FD90024C8EC /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 69297EF818B44FD90024C8EC /* Helper.m */; };
+		69297EFA18B44FD90024C8EC /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 69297EF818B44FD90024C8EC /* Helper.m */; };
 		6943E7DA18808AA5008B9060 /* person-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6943E7D918808AA5008B9060 /* person-hd.png */; };
 		6943E7DB18808AA5008B9060 /* person-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6943E7D918808AA5008B9060 /* person-hd.png */; };
 		6943E7DE18808B66008B9060 /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 6943E7DD18808B66008B9060 /* Ball.m */; };
@@ -37,8 +45,6 @@
 		696C9C96188088FC0042A0BE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C9C94188088FC0042A0BE /* Player.m */; };
 		6983B2F11899C5ED00E35D8C /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6983B2F01899C5ED00E35D8C /* HUDLayer.m */; };
 		6983B2F21899C5ED00E35D8C /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6983B2F01899C5ED00E35D8C /* HUDLayer.m */; };
-		69F7D47218909DEC00A03C6A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F7D47118909DEC00A03C6A /* Constants.m */; };
-		69F7D47318909DEC00A03C6A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F7D47118909DEC00A03C6A /* Constants.m */; };
 		DC21B88B1511078F00FD4891 /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B8881511078F00FD4891 /* fps_images-hd.png */; };
 		DC21B88C1511078F00FD4891 /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B8891511078F00FD4891 /* fps_images-ipadhd.png */; };
 		DC21B88D1511078F00FD4891 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B88A1511078F00FD4891 /* fps_images.png */; };
@@ -83,6 +89,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69297EE318B43DDC0024C8EC /* CircleBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleBall.h; sourceTree = "<group>"; };
+		69297EE418B43DDC0024C8EC /* CircleBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleBall.m; sourceTree = "<group>"; };
+		69297EE718B443FC0024C8EC /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		69297EE818B444A30024C8EC /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		69297EEE18B44DDA0024C8EC /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		69297EF518B44FD40024C8EC /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		69297EF818B44FD90024C8EC /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		6943E7D918808AA5008B9060 /* person-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person-hd.png"; sourceTree = "<group>"; };
 		6943E7DC18808B66008B9060 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
 		6943E7DD18808B66008B9060 /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ball.m; sourceTree = "<group>"; };
@@ -106,7 +119,6 @@
 		6983B2EF1899C5ED00E35D8C /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
 		6983B2F01899C5ED00E35D8C /* HUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDLayer.m; sourceTree = "<group>"; };
 		69F7D47018909DEC00A03C6A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		69F7D47118909DEC00A03C6A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DC21B8881511078F00FD4891 /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-hd.png"; sourceTree = "<group>"; };
 		DC21B8891511078F00FD4891 /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-ipadhd.png"; sourceTree = "<group>"; };
 		DC21B88A1511078F00FD4891 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
@@ -202,6 +214,8 @@
 				696C9C94188088FC0042A0BE /* Player.m */,
 				6943E7DC18808B66008B9060 /* Ball.h */,
 				6943E7DD18808B66008B9060 /* Ball.m */,
+				69297EE318B43DDC0024C8EC /* CircleBall.h */,
+				69297EE418B43DDC0024C8EC /* CircleBall.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -322,7 +336,11 @@
 				6943E80A18849D82008B9060 /* Scenes */,
 				6943E80918849D7D008B9060 /* Objects */,
 				69F7D47018909DEC00A03C6A /* Constants.h */,
-				69F7D47118909DEC00A03C6A /* Constants.m */,
+				69297EE818B444A30024C8EC /* Constants.m */,
+				69297EEE18B44DDA0024C8EC /* Global.h */,
+				69297EF518B44FD40024C8EC /* Global.m */,
+				69297EF818B44FD90024C8EC /* Helper.m */,
+				69297EE718B443FC0024C8EC /* Helper.h */,
 				6943E80518849D1C008B9060 /* GameManager.h */,
 				6943E80618849D1C008B9060 /* GameManager.m */,
 				DCC1A38D13A94F1A005BD75D /* AppDelegate.h */,
@@ -494,14 +512,17 @@
 				6943E7F718848ACC008B9060 /* IntroLayer.m in Sources */,
 				6983B2F11899C5ED00E35D8C /* HUDLayer.m in Sources */,
 				6943E7DE18808B66008B9060 /* Ball.m in Sources */,
+				69297EF618B44FD40024C8EC /* Global.m in Sources */,
 				696C9C95188088FC0042A0BE /* Player.m in Sources */,
 				6943E80718849D1C008B9060 /* GameManager.m in Sources */,
 				6943E7FF18849CF2008B9060 /* GameScene.m in Sources */,
-				69F7D47218909DEC00A03C6A /* Constants.m in Sources */,
 				DCC1A3A913A94F1A005BD75D /* AppDelegate.m in Sources */,
+				69297EE518B43DDC0024C8EC /* CircleBall.m in Sources */,
 				DCC1A3AB13A94F1A005BD75D /* GameLayer.m in Sources */,
 				6943E80E1884A487008B9060 /* IntroScene.m in Sources */,
+				69297EF918B44FD90024C8EC /* Helper.m in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.m in Sources */,
+				69297EE918B444A30024C8EC /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,14 +533,17 @@
 				6943E7F818848ACC008B9060 /* IntroLayer.m in Sources */,
 				6983B2F21899C5ED00E35D8C /* HUDLayer.m in Sources */,
 				6943E7DF18808B66008B9060 /* Ball.m in Sources */,
+				69297EF718B44FD40024C8EC /* Global.m in Sources */,
 				696C9C96188088FC0042A0BE /* Player.m in Sources */,
 				6943E80818849D1C008B9060 /* GameManager.m in Sources */,
 				6943E80018849CF2008B9060 /* GameScene.m in Sources */,
-				69F7D47318909DEC00A03C6A /* Constants.m in Sources */,
 				DCC1A3AA13A94F1A005BD75D /* AppDelegate.m in Sources */,
+				69297EE618B43DDC0024C8EC /* CircleBall.m in Sources */,
 				DCC1A3AC13A94F1A005BD75D /* GameLayer.m in Sources */,
 				6943E80F1884A487008B9060 /* IntroScene.m in Sources */,
+				69297EFA18B44FD90024C8EC /* Helper.m in Sources */,
 				DCC1A3AE13A94F1A005BD75D /* main.m in Sources */,
+				69297EEA18B444A30024C8EC /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

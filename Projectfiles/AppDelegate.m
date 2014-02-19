@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "GameManager.h"
+#import "Global.h"
 
 @implementation AppDelegate
 
@@ -20,6 +21,8 @@
     /* configuration */
     //    [[[CCDirector sharedDirector ] scheduler] setTimeScale:0.5];
     [[CCDirector sharedDirector] setDisplayStats:NO];
+    
+    WIN_SIZE = [[CCDirector sharedDirector] winSize];
     /* Run the scene */
     [[CCDirector sharedDirector] runWithScene:((CCScene*)[[GameManager sharedManager] newIntroScene])];
 }

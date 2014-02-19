@@ -7,11 +7,11 @@
 
 #import "GameLayer.h"
 #import "Ball.h"
+#import "CircleBall.h"
 #import "Player.h"
 #import "GameManager.h"
 #import "Constants.h"
-
-static CGSize WIN_SIZE;
+#import "Global.h"
 
 @implementation GameLayer
 
@@ -26,52 +26,51 @@ static CGSize WIN_SIZE;
         _balls = [NSMutableArray array];
         _player = [Player node];
         
+        
+        // update player movement based on touch and also collision statuses (since this is checked instantly)
         [self scheduleUpdate];
-        [self schedule:@selector(updateObjects:) interval:0.8];
+        
+        // update the balls for spawning and removal from memory
+        [self schedule:@selector(spawnRegularBalls:) interval:0.8];
+        [self schedule:@selector(cleanupBalls:) interval:0.8];
+        
+        // update the score (HUD-related)
+        [self schedule:@selector(updateDifficulty:) interval:5.0];
         [self schedule:@selector(updateScore:) interval:1.0];
         
         [self addChild:_player];
+        
         CCLOG(@"gamelayer initialized");
 	}
     
 	return self;
 }
 
--(Ball*) spawnBall{
-    Ball* ball = [Ball node];
-    [self addChild:ball];
-    
-    double slope = (_player.position.y-ball.position.y)/(_player.position.x-ball.position.x);
-    CGFloat x2;
-    CGFloat y2;
-    if ([_player position].x>[ball position].x){
-        x2 = WIN_SIZE.width+[ball boundingBox].size.width/2;
-    }
-    else if([_player position].x<[ball position].x){
-        x2 = 0-[ball boundingBox].size.width/2;
-    }
-    y2 = ball.position.y+slope*(x2-ball.position.x); // y2 = y1+m(x2-x1)
-    
-    CGPoint dest = ccp(x2,y2);
-    [ball runAction:[CCMoveTo actionWithDuration:ccpDistance(ball.position,dest)/BALL_SPEED position:dest]];
-    return ball;
+// TODO: obviously, this is a bit repetitive with the spawning of balls so refactor
+-(void) spawnRegularBalls:(ccTime)deltaTime{
+    // spawn balls
+    Ball* newBall = [Ball node];
+    [self addChild:newBall];
+    [newBall target:_player.position];
+    [_balls addObject:newBall];
 }
 
--(void) updateScore:(ccTime)deltaTime{
-    self.score += deltaTime;
+-(void) spawnCircleBalls:(ccTime)deltaTime{
+    // spawn balls
+    CircleBall* newBall = [CircleBall node];
+    [self addChild:newBall];
+    [_balls addObject:newBall];
 }
 
--(void) updateObjects:(ccTime)deltaTime{
-    Ball* newBall = [self spawnBall];
+-(void) cleanupBalls:(ccTime)deltaTime{
+    // remove balls
     NSMutableArray* ballsToCleanUp = [NSMutableArray array];
     for(Ball* ball in _balls){
         if([ball outOfBoundary]){
             [ballsToCleanUp addObject:ball];
         }
     }
-    [_balls addObject:newBall];
     [self clear:ballsToCleanUp];
-    
 }
 
 -(void) clear:(NSMutableArray*) balls{
@@ -79,6 +78,18 @@ static CGSize WIN_SIZE;
         [self removeChild:ball];
         [_balls removeObject:ball];
     }
+}
+
+// runs every 30 seconds
+-(void) updateDifficulty:(ccTime)deltaTime{
+    self.difficulty += 1;
+    if(self.difficulty==1){
+        [self schedule:@selector(spawnCircleBalls:) interval:8.0];
+    }
+}
+
+-(void) updateScore:(ccTime)deltaTime{
+    self.score += deltaTime;
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
@@ -120,6 +131,7 @@ static CGSize WIN_SIZE;
 -(void) update:(ccTime)delta{
     [self updatePlayer:delta];
     CCLOG(@"Player position: %@", NSStringFromCGPoint(self.player.position));
+    
     // check collisions
     if ([self collisionExists]){
         CCLOG(@"Collided");
@@ -143,22 +155,18 @@ static CGSize WIN_SIZE;
          */
         // right
         if(diff.x>playerSize.width/2 && touchData.position.x>playerPos.x && fabs(diff.x)>=dxy){
-//            CCLOG(@"RIGHT");
             playerPos.x += dxy;
         }
         // left
         else if(diff.x<-playerSize.width/2 && touchData.position.x<playerPos.x && fabs(diff.x)>=dxy){
-//            CCLOG(@"LEFT");
             playerPos.x -= dxy;
         }
         // up
         if(diff.y>playerSize.height/2 && touchData.position.y>playerPos.y && fabs(diff.y)>=dxy){
-//            CCLOG(@"UP");
             playerPos.y += dxy;
         }
         // down
         else if(diff.y<-playerSize.height/2 && touchData.position.y<playerPos.y && fabs(diff.y)>=dxy){
-//            CCLOG(@"DOWN");
             playerPos.y -= dxy;
         }
         [self setPlayerPosition:playerPos];

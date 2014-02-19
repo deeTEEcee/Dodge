@@ -9,11 +9,13 @@
 #import "Player.h"
 #import "Constants.h"
 
+static Player* activePlayer;
 
 @implementation Player
 
 -(id)init{
     if(self=[super init]){
+        activePlayer = self;
         CCSprite* player = [CCSprite spriteWithFile:@"test.png"];
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         self.position = ccp(winSize.width/2, winSize.height/2);
@@ -21,6 +23,10 @@
         [self addChild:player];
     }
     return self;
+}
+
++(Player*) getActivePlayer{
+    return activePlayer;
 }
 
 @end

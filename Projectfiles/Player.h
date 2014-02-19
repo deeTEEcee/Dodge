@@ -11,4 +11,6 @@
     
 }
 
++(Player*) getActivePlayer;
+
 @end

@@ -7,5 +7,6 @@
 //
 
 
-extern const float BALL_SPEED;
+extern const float DEFAULT_BALL_SPEED;
+extern const float CIRCLE_BALL_CENTER_SPEED;
 extern const float PLAYER_SPEED;
