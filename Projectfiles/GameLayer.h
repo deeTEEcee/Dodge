@@ -5,10 +5,10 @@
  * Released under MIT License in Germany (LICENSE-Kobold2D.txt).
  */
 
-#import "kobold2d.h"
-
 @class Player;
 @class Ball;
+#import "kobold2d.h"
+
 
 @interface GameLayer : CCLayer
 {

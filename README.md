@@ -1,9 +1,10 @@
+To watch demo:
+http://www.youtube.com/watch?v=oOO74rflqMI&feature=youtu.be
+
+Note: I thought it would be easy to cross-platform but the documentation wasn't simple enough and there was no tutorial given that showed how Kobold2D would compare mouse inputs the same as touch inputs or some way to differentiate the mac vs. the ios when coding. (TLDR: didn't want to spend the time to figure it out when I need to do other stuff as well)
+
+
 TODO:
-
-
-- add sounds as the balls pop out
-- add the sound when i get hit
-- look at sample code that can show me a good way to decouple the HUD and the game layer while updating everything
 - add the slowballs and fastballs (fastballs can only come from the farther side of the screen)
 
 - start modifying "how the level progresses over time" but only with the regular and fastballs right now.. BUT, think about the new balls also so we can easily add those laasasZter on
