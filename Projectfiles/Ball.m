@@ -52,6 +52,7 @@
     y2 = self.position.y+slope*(x2-self.position.x); // y2 = y1+m(x2-x1)
     
     CGPoint dest = ccp(x2,y2);
+    
     [self runAction:[CCMoveTo actionWithDuration:ccpDistance(self.position,dest)/DEFAULT_BALL_SPEED position:dest]];
 }
 

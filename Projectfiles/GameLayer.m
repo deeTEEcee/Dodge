@@ -12,6 +12,7 @@
 #import "GameManager.h"
 #import "Constants.h"
 #import "Global.h"
+#import "SimpleAudioEngine.h"
 
 @implementation GameLayer
 
@@ -53,6 +54,9 @@
     [self addChild:newBall];
     [newBall target:_player.position];
     [_balls addObject:newBall];
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"ball.wav"];
+    
 }
 
 -(void) spawnCircleBalls:(ccTime)deltaTime{
@@ -135,6 +139,7 @@
     // check collisions
     if ([self collisionExists]){
         CCLOG(@"Collided");
+        [[SimpleAudioEngine sharedEngine] playEffect:@"slap.mp3"];
         [self gameOver];
     }
     CCLOG(@"new score: %d", self.score);
